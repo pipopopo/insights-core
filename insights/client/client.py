@@ -244,15 +244,6 @@ def get_machine_id():
     return generate_machine_id()
 
 
-def update_rules(config, pconn):
-    if not pconn:
-        raise ValueError('ERROR: Cannot update rules in --offline mode. '
-                         'Disable auto_update in config file.')
-
-    pc = InsightsUploadConf(config, conn=pconn)
-    return pc.get_conf_update()
-
-
 def get_branch_info(config):
     """
     Get branch info for a system
@@ -274,7 +265,6 @@ def collect(config, pconn):
     pc = InsightsUploadConf(config)
     tar_file = None
 
-    collection_rules = pc.get_conf_file()
     rm_conf = pc.get_rm_conf()
     if rm_conf:
         logger.warn("WARNING: Excluding data from files")
@@ -286,8 +276,8 @@ def collect(config, pconn):
     msg_name = determine_hostname(config.display_name)
     dc = DataCollector(config, archive, mountpoint=mp)
     logger.info('Starting to collect Insights data for %s', msg_name)
-    dc.run_collection(collection_rules, rm_conf, branch_info)
-    tar_file = dc.done(collection_rules, rm_conf)
+    dc.run_collection(rm_conf, branch_info)
+    tar_file = dc.done(rm_conf)
     return tar_file
 
 
