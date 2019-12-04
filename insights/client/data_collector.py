@@ -87,7 +87,7 @@ class DataCollector(object):
             rm_conf = {}
         logger.debug('Beginning to run collection...')
 
-        collected_data_path = collect.collect(tmp_path=self.archive.tmp_dir)
+        collected_data_path = collect.collect(tmp_path=self.archive.tmp_dir, rm_conf=rm_conf)
         self.archive.update(collected_data_path)
         logger.debug('Collection finished.')
 
