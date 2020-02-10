@@ -30,7 +30,7 @@ class InsightsArchive(object):
         # archive_name, archive_dir to be filled in once insights.collect.collect() is run
         self.archive_name = None
         self.archive_dir = None
-        self.compressor = compressor
+        self.compressor = config.compressor
         atexit.register(self.cleanup_tmp)
 
     def update(self, collected_data_path):
