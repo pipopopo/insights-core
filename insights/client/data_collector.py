@@ -82,6 +82,9 @@ class DataCollector(object):
     def run_collection(self, rm_conf, branch_info):
         '''
         Run specs and collect all the data
+
+        Returns:
+            A filepath for the collected archive.
         '''
         # parent_pid = read_pidfile()  # TODO: leverage this in core collection
         if rm_conf is None:
@@ -102,10 +105,6 @@ class DataCollector(object):
         self._write_tags()
         logger.debug('Metadata collection finished.')
 
-    def done(self, rm_conf):
-        """
-        Do finalization stuff
-        """
         if self.config.obfuscate:
             cleaner = SOSCleaner(quiet=True)
             clean_opts = CleanOptions(
