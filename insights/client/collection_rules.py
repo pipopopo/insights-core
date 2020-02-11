@@ -7,7 +7,6 @@ import six
 import os
 from six.moves import configparser as ConfigParser
 from .constants import InsightsConstants as constants
-from .utilities import _expand_paths
 
 APP_NAME = constants.app_name
 logger = logging.getLogger(__name__)
