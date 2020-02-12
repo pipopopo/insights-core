@@ -43,16 +43,6 @@ class InsightsUploadConf(object):
                 else:
                     rm_conf[item] = value.strip().decode('string-escape').split(',')
 
-            # add tokens to limit regex handling (for now)
-            #   core parses blacklist for files and commands as regex
-            if 'files' in rm_conf:
-                for idx, f in enumerate(rm_conf['files']):
-                    rm_conf['files'][idx] = '^' + f + '$'
-
-            if 'commands' in rm_conf:
-                for idx, c in enumerate(rm_conf['commands']):
-                    rm_conf['commands'][idx] = '^' + c + '$'
-
             return rm_conf
         except ConfigParser.Error as e:
             raise RuntimeError('ERROR: Could not parse the remove.conf file. ' + str(e))
