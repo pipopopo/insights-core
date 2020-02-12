@@ -122,7 +122,7 @@ class InsightsArchive(object):
         """
         tar_file_name = os.path.join(self.archive_tmp_dir, self.archive_name)
         ext = "" if self.compressor == "none" else ".%s" % self.compressor
-        tar_file_name = tar_file_name + ".tar" + ext
+        tar_file_name = str(tar_file_name + ".tar" + ext)
         logger.debug("Tar File: " + tar_file_name)
         if self.compressor not in ["gz", "xz", "bz2", "none"]:
             logger.error("The compressor %s is not supported.  Using default: gz", self.compressor)
