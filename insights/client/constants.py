@@ -42,6 +42,4 @@ class InsightsConstants(object):
     sig_kill_bad = 101
     cached_branch_info = os.path.join(default_conf_dir, '.branch_info')
     pidfile = os.path.join(os.sep, 'var', 'run', 'insights-client.pid')
-    # this file is used to attempt registration when the client starts, implies --register
-    register_marker_file = os.path.join(os.sep, 'var', 'run', 'insights-client-try-register')
     valid_compressors = ("gz", "xz", "bz2", "none")

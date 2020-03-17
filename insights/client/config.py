@@ -675,8 +675,6 @@ class InsightsConfig(object):
             self.legacy_upload = False
         if self.payload and (self.logging_file == constants.default_log_file):
             self.logging_file = constants.default_payload_log
-        if os.path.exists(constants.register_marker_file):
-            self.register = True
         if self.output_dir or self.output_file:
             # do not upload in this case
             self.no_upload = True
